@@ -6,10 +6,10 @@ description: Generates compliant marketing content (ads, web pages, schema, emai
 # Skill #244-NY — Business Law & Contracts Marketing Kit (New York) v1.0
 
 **Bundle:** legal-services-bundle-ny (Skill 6 of 6)
-**Price:** $47 one-time | DFY: $197/engagement
+**Use:** Internal — AG project
 **Anchor moat:** Rule 7.1(f) "Attorney Advertising" label + Rule 7.1(d)/(e) past-results disclaimer + 22 NYCRR Part 1215 engagement letter gate + LLC Law § 206 publication gate + NY non-compete (BDO Seidman) gate + Rule 1.8(a) equity-for-fees disclosure
 
-> **Currency note.** Rules below reflect New York law as understood in October 2026. Items marked **⚠️ VERIFY** are moving targets (pending legislation, fee schedules, tax rates, phase-in dates). Before any DFY delivery, confirm those items against the current 22 NYCRR Part 1200, NY Department of State, and NY Department of Taxation & Finance sources. This kit produces marketing drafts, not legal advice; the responsible attorney must review and approve every piece before dissemination (Rule 5.1 / 5.3 supervision).
+> **Currency note.** Rules below reflect New York law as understood in October 2026. Items marked **⚠️ VERIFY** are moving targets (pending legislation, fee schedules, tax rates, phase-in dates). Before anything is published, confirm those items against the current 22 NYCRR Part 1200, NY Department of State, and NY Department of Taxation & Finance sources. This kit produces marketing drafts, not legal advice; the responsible attorney must review and approve every piece before dissemination (Rule 5.1 / 5.3 supervision).
 
 ---
 
@@ -46,7 +46,7 @@ Generates legally compliant marketing content for New York business law and cont
 - **Rule 7.1(k) — Retention.** Keep a copy of every advertisement for 3 years (1 year for computer-accessed communications). Preserve website content at launch, at each major redesign or meaningful content change, and no less than every 90 days.
 - **FTC Endorsement Guides (16 CFR Part 255, 2023 rev.) + Consumer Review Rule (16 CFR Part 465):** "We saved a client $2M in a contract dispute" implies typicality — disclose atypicality in the same visual field.
 
-**What this skill outputs:** "Attorney Advertising" on every home page, first page, mailer, and email subject line. Name/address/phone block on every ad. "Prior results do not guarantee a similar outcome." adjacent to any result, testimonial, rating, or comparison. Process-, thoroughness-, and risk-reduction-focused benefit language. No guarantees, no results-implying slogans, no undisclosed dramatizations. A retention reminder in every DFY delivery note.
+**What this skill outputs:** "Attorney Advertising" on every home page, first page, mailer, and email subject line. Name/address/phone block on every ad. "Prior results do not guarantee a similar outcome." adjacent to any result, testimonial, rating, or comparison. Process-, thoroughness-, and risk-reduction-focused benefit language. No guarantees, no results-implying slogans, no undisclosed dramatizations. A retention reminder with every output.
 
 ---
 
@@ -217,15 +217,6 @@ Each module runs every draft through the Pre-Publish Gate (below) before output,
 **Firm:** Hartwell & Osei PLLC (fictional), Manhattan, NY
 **Attorney:** Dana Hartwell, Admitted in New York (fictional) | NYSBA Business Law Section
 **15/15 compliance blockers identified and corrected.** See `examples/ny-business-law-firm.md`.
-
----
-
-## Pricing
-| Tier | Price | Delivery |
-|------|-------|----------|
-| Skill (DIY) | $47 | Instant download |
-| DFY Basic | $197 | 5-day turnaround, 1 ad campaign + 2 web pages |
-| DFY Full | $397 | 10-day turnaround, full 4-module implementation |
 
 ---
 
