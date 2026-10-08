@@ -1,6 +1,6 @@
 ---
 name: ny-business-law-marketing-kit
-description: Generates compliant marketing content (ads, web pages, schema, email sequences, LinkedIn, review/referral programs) for New York business law and contracts attorneys. Enforces NY Rules of Professional Conduct Part 1200 (Rule 7.1 "Attorney Advertising" labeling, past-results disclaimer, fixed-fee scope statements, 7.3 solicitation filing, 7.4 specialist ban and certification statement, 7.5 trade and domain names, 1.5(d)(4) no nonrefundable retainers), 22 NYCRR Part 1215 engagement letters, LLC Law § 206 publication, NY non-compete common law, Freelance Isn't Free Act, and Rule 1.8(a) equity-for-fees. Use for any marketing request from a New York business, corporate, startup, or contracts law firm.
+description: Generates compliant marketing content (ads, web pages, schema, email sequences, LinkedIn, review/referral programs) for New York business law and contracts attorneys. Enforces NY Rules of Professional Conduct Part 1200 (Rule 7.1 "Attorney Advertising" labeling, past-results disclaimer, fixed-fee scope statements, 7.3 solicitation filing, 7.4 specialist ban and certification statement, 7.5 trade and domain names, 1.5(d)(4) no nonrefundable retainers), 22 NYCRR Part 1215 engagement letters, LLC Law § 206 publication, NY non-compete common law, Freelance Isn't Free Act, and Rule 1.8(a) equity-for-fees. Use for any marketing request or AG blog/content from a New York business, corporate, startup, or contracts law firm. Every legal fact must be verified against the Open US Law Hugging Face dataset, NY case law, or the skill's verified-facts log before it is written.
 ---
 
 # Skill #244-NY — Business Law & Contracts Marketing Kit (New York) v1.0
@@ -17,11 +17,12 @@ description: Generates compliant marketing content (ads, web pages, schema, emai
 
 Generates legally compliant marketing content for New York business law and contracts attorneys. Every output enforces 8 compliance moats that general AI tools don't apply — protecting attorneys from grievance committee complaints, FTC actions, Part 137 fee arbitrations, and Part 1215 engagement-letter violations while producing marketing that converts business clients ethically.
 
-**4 prompt modules:**
+**5 prompt modules:**
 1. **Client Acquisition Campaigns** — Google Ads, LinkedIn, email intake sequences
 2. **Digital Advertising Suite** — LSA, RSA ad groups, GBP posts, LinkedIn thought leadership
 3. **Website Content & Schema** — practice area pages, attorney bio, FAQ, JSON-LD
 4. **Reputation & Referral Program** — review sequences, CPA/banker/VC referral network, LinkedIn authority content
+5. **Blog & Educational Content (AG)** — source-verified explainers and articles with a Verification Log
 
 ### Required inputs (ask if missing)
 - Firm name, entity type (PLLC / LLP / PC / sole practitioner), principal office address + phone (Rule 7.1(h))
@@ -215,6 +216,24 @@ Generates legally compliant marketing content for New York business law and cont
 
 ---
 
+## Source Verification for AG Content (required)
+
+Before writing **any** content for the AG project — blog posts, practice-area pages, FAQs, newsletters, social posts — follow `references/content-verification-protocol.md`. In short:
+
+1. **Never state a legal fact from memory.** Every citation, fee, deadline, threshold, exception, effective date, and case holding must be checked against a primary source.
+2. **Check sources in this order:**
+   1. this skill's ✓ facts and `references/source-verification.md` (if checked within 90 days);
+   2. the **Open US Law dataset** in the `CHREGGIE/Datasets` Hugging Face bucket, via `scripts/law_lookup.py`;
+   3. **`docketx/us-caselaw-ny`** on Hugging Face for case law;
+   4. **Cornell LII** for 22 NYCRR (Rules of Professional Conduct, Part 1215) and other NYCRR titles;
+   5. agency sites (dos.ny.gov, nyc.gov/finance).
+3. **Confirm the section is `in_force`,** and that its exact words support the claim. "Not found" means unverified, not false.
+4. **Flag anything unverified** in the draft as `⚠️ VERIFY: [claim] — [why]`. A draft with any flag is not ready to publish.
+5. **Date-stamp moving facts** ("As of October 2026"). Link readers to official sources (nysenate.gov, nycourts.gov, dos.ny.gov, nyc.gov). Describe pending bills as pending.
+6. **Deliver a Verification Log** with every piece (claim, source, cite/URL, date checked, result). Add newly verified facts to `references/source-verification.md`.
+
+---
+
 ## Prompt Modules
 
 Each module runs every draft through the Pre-Publish Gate (below) before output, and returns: (1) the content, (2) a **Compliance Log** listing every moat triggered and the fix applied, (3) any **⚠️ VERIFY** items the attorney must confirm.
@@ -242,6 +261,17 @@ Each module runs every draft through the Pre-Publish Gate (below) before output,
 - **CPA / banker / wealth-manager / VC referral network:** educational co-hosted events and content; **no referral fees or anything of value for referrals (Rule 7.2(a))**; Rule 5.8 compliance for any formal nonlawyer-professional arrangement.
 - **LinkedIn authority content** calendar (12 weeks) — testimonial or results posts carry consent + disclaimer requirements.
 
+### Module 5 — Blog & Educational Content (AG)
+- **Topics:** NY legal explainers for business owners and founders, e.g. "Do I have to publish my New York LLC?", "Are non-competes enforceable in New York?", "What the NY LLC Transparency Act means for your company".
+- **Workflow:**
+  1. Outline the claims the post will make.
+  2. Verify each one under the Source Verification protocol above.
+  3. Write, mirroring the source language and date-stamping moving facts.
+  4. Add official-source links and a short "This post is general information, not legal advice" line.
+  5. Run the Pre-Publish Gate.
+  6. Attach the Verification Log.
+- **Advertising rules still apply:** a blog that promotes the firm is attorney advertising. Apply "Attorney Advertising" labeling per Rule 7.1(f), the firm identification block, and the past-results disclaimer for any case results.
+
 ---
 
 ## Pre-Publish Gate (run on every output)
@@ -263,6 +293,7 @@ Each module runs every draft through the Pre-Publish Gate (below) before output,
 | 13 | No compensation for referrals; no confidential info in review replies | 7.2(a); 1.6 |
 | 14 | Capital-raising: Reg D/CF accurate; no guaranteed raise; no finder offers | Securities Act; Martin Act |
 | 15 | Marked as a draft needing attorney pre-approval; retention reminder (3 years, 1 year, 90-day website snapshots) | 7.1(k) |
+| 16 | Every legal fact verified per the Source Verification protocol; no ⚠️ VERIFY flags left; Verification Log attached | Content Verification Protocol |
 
 ---
 
