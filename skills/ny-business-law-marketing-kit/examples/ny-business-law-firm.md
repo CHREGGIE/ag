@@ -74,7 +74,7 @@
 > - Articles of Organization filed with the NY Department of State ($200 state fee)
 > - **Publication requirement (LLC Law § 206):** within 120 days, notice must run in two newspapers designated by your county clerk for six consecutive weeks, followed by a Certificate of Publication. Costs vary widely by county — in New York County they often exceed $1,000. Skipping this suspends your LLC's authority to do business.
 > - Operating agreement drafted for your ownership and management structure
-> - Ongoing: Biennial Statement; NY LLC Transparency Act beneficial-ownership filing (we'll confirm current requirements for your entity); NY State and, in the five boroughs, NYC tax obligations
+> - Ongoing: Biennial Statement; no beneficial-ownership filing for LLCs formed in New York or another US state (the NY LLC Transparency Act now applies only to LLCs formed abroad); NY State and, in the five boroughs, NYC tax obligations
 >
 > **Our fee:** $499 flat legal fee covers the Articles, operating agreement (single-member), and EIN application. **Not included:** state filing fee, publication costs, multi-member operating agreements, tax advice. You'll receive a written engagement letter before work begins.
 >
@@ -109,4 +109,4 @@
 - Moat 7: Solicitation filing flag; source-of-contact line added (7.3(f)); referral gift cards removed (7.2(a)).
 - Moat 8: Investor-network claim removed; securities-counsel framing.
 - Retention: Archive all pieces (3 yrs ads / 1 yr email; website snapshot now and every 90 days).
-- **⚠️ VERIFY before publishing:** current LLC Transparency Act deadlines, non-compete bill status, NY County publication cost range.
+- **⚠️ VERIFY before publishing:** non-compete bill status (state and NYC), the NY County publication cost range, and the Form D filing deadline.

@@ -47,12 +47,21 @@ The law text is public domain; the compiled dataset is licensed for non-commerci
 | 22 NYCRR § 1215.1 | ✓ | **Corrected:** the letter is due *before* the representation begins; it may follow later only if giving it first is impracticable or the scope is undeterminable. Updated letter required for significant changes |
 | 22 NYCRR § 1215.2 | ✓ Under-$3,000 exception confirmed | **Added:** the other three exceptions |
 
-## Not in the dataset — still ⚠️ VERIFY
+## Agency rules, city law and guidance — checked October 8, 2026
 
-| Item | Why |
-|---|---|
-| NY Rule 506 notice filing | It's in the Attorney General's regulations; NY regulations aren't in the dataset |
-| LLC Transparency Act effective date and DOS implementation | Not in the statute text |
-| NYC taxes (UBT, Business Corporation Tax) | NYC Administrative Code isn't in the dataset |
-| Pending non-compete bills | Bills aren't in the dataset |
-| FTC Endorsement Guides and Consumer Review Rule | Could be checked against `us_federal_regulations.parquet` (16 CFR Parts 255, 465) |
+| Item | Source | Result |
+|---|---|---|
+| NY notice filing for Rule 506 offerings | 13 NYCRR §§ 10.1(a)(3), 10.8, 10.10 (via Cornell LII) | ✓ Form D filed with the Department of Law; $300 fee (≤ $500,000 offering) or $1,200 (larger); $30 per amendment. **Corrected:** removed the unverified "via NASAA EFD" wording. The deadline isn't in the regulation |
+| NY LLC Transparency Act scope, deadlines, penalties | Department of State beneficial-ownership pages and FAQ (dos.ny.gov; FAQ current as of Dec. 23, 2025) | ✓ **Major correction:** domestic LLCs and LLCs formed in other US states are exempt and file nothing. Only LLCs formed under a foreign country's law file. In force since Jan. 1, 2026; 30 days after authority; pre-2026 foreign-country LLCs by Dec. 31, 2026; $25 fee; AG fines up to $500/day; suspension after notice |
+| NYC Unincorporated Business Tax | NYC Department of Finance (nyc.gov/finance) | ✓ 4% of NYC-allocated income; full credit at $3,400 or less, partial up to $5,400; covers partnership-taxed LLCs |
+| NYC Business Corporation Tax | NYC Department of Finance | ✓ C corporations; $1M+ NYC receipts threshold since 2022; S corporations stay under the General Corporation Tax |
+
+## Still ⚠️ VERIFY
+
+| Item | Why | How to close it |
+|---|---|---|
+| Pending non-compete bills (state) | The Senate's bill API needs a free API key; nysenate.gov and nyassembly.gov are blocked or behind a browser check | Get a free Open Legislation key (legislation.nysenate.gov) and store it as an environment secret, or allow `nyassembly.gov` |
+| Pending non-compete bills (NYC Council) | legistar.council.nyc.gov loads search results through a background script | Check manually, or allow `webapi.legistar.com` (may need a token) |
+| Form D filing deadline and submission method | Not stated in 13 NYCRR Part 10 | NY Attorney General Investor Protection Bureau guidance (ag.ny.gov) |
+| State tax rates and MCTMT thresholds | tax.ny.gov didn't connect | Allow `www.tax.ny.gov` |
+| FTC Endorsement Guides and Consumer Review Rule | Not yet checked | `us_federal_regulations.parquet` in the bucket (16 CFR Parts 255, 465) |
