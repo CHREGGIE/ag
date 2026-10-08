@@ -24,12 +24,33 @@ The law text is public domain; the compiled dataset is licensed for non-commerci
 | *Post v. Merrill Lynch*, 48 N.Y.2d 84 (1979) | Firing without cause limits enforcement | ✓ Holding is narrower than the skill first said: it covers forfeiture-for-competition clauses (pension benefits); skill text corrected |
 | Judiciary Law §§ 478, 484, 485, 485-a, 495 | Unauthorized practice is a misdemeanor; class E felony under § 485-a when the person falsely holds out and causes more than $1,000 in loss; corporations may not practice law | ✓ Matches |
 
+## Rules of Professional Conduct and Part 1215 — checked October 8, 2026
+
+**Source:** Cornell LII's copy of 22 NYCRR (law.cornell.edu), which reproduces the official NYCRR. nycourts.gov sits behind a Cloudflare browser check and couldn't be read directly. Neither Part appears in any Hugging Face dataset found (Open US Law; `docketx/court-rules` covers only Parts 1–81, 100–161, 200–221).
+
+| Rule | Result | Change made to the skill |
+|---|---|---|
+| 7.1(f) "Attorney Advertising" label, email subject line | ✓ Matches | — |
+| 7.1(h) name, address, phone | ✓ Matches | — |
+| 7.1(d)/(e) results, comparisons, testimonials + "Prior results do not guarantee a similar outcome" | ✓ Matches | **Corrected:** pending-matter testimonials are *allowed* with informed consent confirmed in writing (the skill had said they were barred) |
+| 7.1(c) specific bans | ✓ Paid endorsements, fictitious firms, undisclosed actors/dramatizations, ads resembling legal documents | **Corrected:** the "nickname or motto implying results" ban is no longer in 7.1(c); results-implying slogans are now handled under 7.1(a) (misleading) |
+| 7.1(k) retention | ✓ Matches | **Added:** every ad must be pre-approved by the lawyer or firm |
+| 7.1(b)(2), (g), (i), (j), (l)–(o) | New to the skill | **Added:** written consent before naming clients; no hidden meta tags; home-page legibility; written scope statement for advertised fixed fees; can't charge more than the advertised fee without written agreement; advertised fees binding 30+ days; no paying the press |
+| 7.2(a) referral payments | ✓ Matches | **Corrected:** removed "cost of advertising" exception wording; listed the actual exceptions |
+| 7.3 solicitation | ✓ Filing with the disciplinary committee confirmed | **Added:** file at the time it goes out; don't mention the filing; keep recipient list 3 years; disclose the source when outreach is event-triggered (7.3(f)); own website exempt |
+| 7.4 specialist | ✓ No "specialist" without certification | **Corrected — important:** the required statement is now "This certification is not granted by any governmental authority." (other-state version: "...within the State of New York."), printed at least two font sizes larger. The longer disclaimer in the original draft was superseded |
+| 7.5 names and domains | ✓ No misleading trade or domain names | **Corrected:** cited as 7.5(b), not 7.5(e); added LLC/PLLC/PC naming and nonlawyer-name rules |
+| 1.5(a), (b) | ✓ Matches | — |
+| 1.5(d)(4) | New to the skill | **Added:** nonrefundable retainers are prohibited |
+| 1.8(a) | ✓ Matches word for word on all three conditions | — |
+| 5.8 | ✓ | **Added:** approved-profession list, informed written consent, Statement of Client's Rights |
+| 22 NYCRR § 1215.1 | ✓ | **Corrected:** the letter is due *before* the representation begins; it may follow later only if giving it first is impracticable or the scope is undeterminable. Updated letter required for significant changes |
+| 22 NYCRR § 1215.2 | ✓ Under-$3,000 exception confirmed | **Added:** the other three exceptions |
+
 ## Not in the dataset — still ⚠️ VERIFY
 
 | Item | Why |
 |---|---|
-| 22 NYCRR Part 1200 (Rules of Professional Conduct 7.1, 7.3, 7.4, 7.5, 1.5, 1.8, 5.8) | Absent from Open US Law and from `docketx/court-rules` (which covers only Parts 1–81, 100–161, 200–221); no other Hugging Face dataset found. Check at nycourts.gov |
-| 22 NYCRR Part 1215 (engagement letters) | Same as Part 1200 |
 | NY Rule 506 notice filing | It's in the Attorney General's regulations; NY regulations aren't in the dataset |
 | LLC Transparency Act effective date and DOS implementation | Not in the statute text |
 | NYC taxes (UBT, Business Corporation Tax) | NYC Administrative Code isn't in the dataset |

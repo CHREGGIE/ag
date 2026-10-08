@@ -1,6 +1,6 @@
 ---
 name: ny-business-law-marketing-kit
-description: Generates compliant marketing content (ads, web pages, schema, email sequences, LinkedIn, review/referral programs) for New York business law and contracts attorneys. Enforces NY Rules of Professional Conduct Part 1200 (Rule 7.1 "Attorney Advertising" labeling, past-results disclaimer, 7.3 solicitation filing, 7.4 specialist ban, 7.5 domain names), 22 NYCRR Part 1215 engagement letters, LLC Law § 206 publication, NY non-compete common law, Freelance Isn't Free Act, and Rule 1.8(a) equity-for-fees. Use for any marketing request from a New York business, corporate, startup, or contracts law firm.
+description: Generates compliant marketing content (ads, web pages, schema, email sequences, LinkedIn, review/referral programs) for New York business law and contracts attorneys. Enforces NY Rules of Professional Conduct Part 1200 (Rule 7.1 "Attorney Advertising" labeling, past-results disclaimer, fixed-fee scope statements, 7.3 solicitation filing, 7.4 specialist ban and certification statement, 7.5 trade and domain names, 1.5(d)(4) no nonrefundable retainers), 22 NYCRR Part 1215 engagement letters, LLC Law § 206 publication, NY non-compete common law, Freelance Isn't Free Act, and Rule 1.8(a) equity-for-fees. Use for any marketing request from a New York business, corporate, startup, or contracts law firm.
 ---
 
 # Skill #244-NY — Business Law & Contracts Marketing Kit (New York) v1.0
@@ -9,7 +9,7 @@ description: Generates compliant marketing content (ads, web pages, schema, emai
 **Use:** Internal — AG project
 **Anchor moat:** Rule 7.1(f) "Attorney Advertising" label + Rule 7.1(d)/(e) past-results disclaimer + 22 NYCRR Part 1215 engagement letter gate + LLC Law § 206 publication gate + NY non-compete (BDO Seidman) gate + Rule 1.8(a) equity-for-fees disclosure
 
-> **Currency note.** Rules below reflect New York law as understood in October 2026. Items marked **⚠️ VERIFY** are moving targets (pending legislation, fee schedules, tax rates, phase-in dates). Before anything is published, confirm those items against the current 22 NYCRR Part 1200, NY Department of State, and NY Department of Taxation & Finance sources. Statutory citations marked **✓** were checked against the Open US Law dataset (snapshot v2026.09.1, NY statutes current through Sept. 30, 2026) — see `references/source-verification.md`. This kit produces marketing drafts, not legal advice; the responsible attorney must review and approve every piece before dissemination (Rule 5.1 / 5.3 supervision).
+> **Currency note.** Rules below reflect New York law as understood in October 2026. Items marked **⚠️ VERIFY** are moving targets (pending legislation, fee schedules, tax rates, phase-in dates). Before anything is published, confirm those items against the current 22 NYCRR Part 1200, NY Department of State, and NY Department of Taxation & Finance sources. Citations marked **✓** were checked against the source text: NY statutes via the Open US Law dataset (snapshot v2026.09.1, current through Sept. 30, 2026), case law via `docketx/us-caselaw-ny`, and the Rules of Professional Conduct and Part 1215 via Cornell LII's copy of 22 NYCRR (Oct. 8, 2026) — see `references/source-verification.md`. This kit produces marketing drafts, not legal advice; the responsible attorney must review and approve every piece before dissemination (Rule 5.1 / 5.3 supervision).
 
 ---
 
@@ -38,15 +38,20 @@ Generates legally compliant marketing content for New York business law and cont
 ### Moat 1: Rule 7.1 Advertising Labels, Results & Testimonials [ANCHOR]
 **What every AI tool generates:** "We'll protect your business." "Win your contract dispute." "We guarantee results." "New York's top business attorney." "Manhattan's best startup lawyer." Fictional client stories with no disclosure.
 
-**What New York requires (22 NYCRR 1200.0, Rule 7.1):**
+**What New York requires (✓ 22 NYCRR § 1200.0, Rule 7.1, checked against current text):**
 - **Rule 7.1(f) — "Attorney Advertising" label.** Every advertisement (other than radio, TV, billboard, directory, newspaper/magazine/periodical ads and related websites, or permitted in-person communications) must be labeled "Attorney Advertising" on the first page — or the **home page** of a website. Self-mailers/postcards carry it on the piece. **Email: the subject line must contain "ATTORNEY ADVERTISING."**
 - **Rule 7.1(h) — Identification.** Every advertisement must include the name, principal law office address, and telephone number of the lawyer or firm.
-- **Rule 7.1(a)/(c) — No false, deceptive, or misleading content.** No guarantees. No nickname, moniker, motto, or trade name implying an ability to obtain results ("The Deal Closer," "Contract Crusher"). No actors portraying lawyers/clients or dramatized scenes without disclosure. No paid endorsements without disclosure.
-- **Rule 7.1(d)/(e) — Results, comparisons, testimonials, quality claims.** Statements likely to create expectations about results, comparisons with other lawyers, client testimonials/endorsements, and statements characterizing the quality of services are permitted **only** if factually supported as of the date published **and** accompanied by the disclaimer: **"Prior results do not guarantee a similar outcome."** Testimonials require the client's prior written consent and may not concern a matter still pending.
-- **Rule 7.1(k) — Retention.** Keep a copy of every advertisement for 3 years (1 year for computer-accessed communications). Preserve website content at launch, at each major redesign or meaningful content change, and no less than every 90 days.
+- **Rule 7.1(i) — Legibility.** Required words must be clearly legible (or intelligible if spoken); on a website they must appear on the **home page**.
+- **Rule 7.1(a) — No false, deceptive, or misleading content.** No guarantees. A slogan like "The Deal Closer" isn't banned by name any more, but one implying results it can't support is still misleading under 7.1(a).
+- **Rule 7.1(c) — Specific bans.** No paid endorsements or testimonials without disclosing the payment. No fictitious firm, and no implying lawyers are associated in a firm when they aren't. No actors portraying a judge, the lawyer, firm members or clients, and no dramatized scenes, without disclosure. No ads made to resemble legal documents.
+- **Rule 7.1(b)(2) — Client names.** Naming clients the firm regularly represents requires the client's **prior written consent**.
+- **Rule 7.1(g) — Hidden code.** No meta tags or other hidden code that would violate the Rules if displayed. This matters for SEO copy.
+- **Rule 7.1(d)/(e) — Results, comparisons, testimonials, quality claims.** Statements likely to create expectations about results, comparisons with other lawyers, client testimonials/endorsements, and statements characterizing the quality of services are permitted **only** if factually supported as of the date published **and** accompanied by the disclaimer: **"Prior results do not guarantee a similar outcome."** A testimonial or endorsement from a client about a matter **still pending** requires the client's **informed consent confirmed in writing**.
+- **Rule 7.1(k) — Pre-approval and retention.** Every advertisement must be **pre-approved by the lawyer or firm**. Keep a copy for 3 years (1 year for computer-accessed communications). Preserve website content at launch, at each major redesign or meaningful content change, and no less than every 90 days.
+- **Rule 7.1(o) — No paying the press.** Nothing of value to journalists or media in return for publicity in a news item. Sponsored content must be treated as an ad.
 - **FTC Endorsement Guides (16 CFR Part 255, 2023 rev.) + Consumer Review Rule (16 CFR Part 465):** "We saved a client $2M in a contract dispute" implies typicality — disclose atypicality in the same visual field.
 
-**What this skill outputs:** "Attorney Advertising" on every home page, first page, mailer, and email subject line. Name/address/phone block on every ad. "Prior results do not guarantee a similar outcome." adjacent to any result, testimonial, rating, or comparison. Process-, thoroughness-, and risk-reduction-focused benefit language. No guarantees, no results-implying slogans, no undisclosed dramatizations. A retention reminder with every output.
+**What this skill outputs:** "Attorney Advertising" on every home page, first page, mailer, and email subject line. Name/address/phone block on every ad. "Prior results do not guarantee a similar outcome." adjacent to any result, testimonial, rating, or comparison. Process-, thoroughness-, and risk-reduction-focused benefit language. No guarantees, no results-implying slogans, no undisclosed dramatizations. Every output is marked "DRAFT — requires attorney pre-approval (Rule 7.1(k))" and carries a retention reminder.
 
 ---
 
@@ -54,13 +59,19 @@ Generates legally compliant marketing content for New York business law and cont
 **What every AI tool generates:** "Contract law specialist." "Board-certified business attorney." "Specializing in M&A." "NYC's #1 corporate firm." Domain names like `winyourbusinesscase.com`.
 
 **What New York requires:**
-- **Rule 7.4(a):** A lawyer may state they practice in, or limit practice to, particular areas — but may **not** state they are a "specialist" or "specialize" in a field **unless** certified by an organization accredited by the ABA (or as otherwise permitted for patent/admiralty). New York has **no state-run certification** for business law or contracts.
-- **Rule 7.4(c):** If an ABA-accredited private certification is claimed, the ad must name the certifying body and state: *"The [name of private certifying organization] is not affiliated with any governmental authority. Certification is not a requirement for the practice of law in the State of New York and does not necessarily indicate greater competence than other attorneys experienced in this field of law."*
+- **✓ Rule 7.4(a):** A lawyer may name the areas of law they practice in, or say their practice is limited to them. But they may **not** say they are a "specialist" or "specialize" in a field except as Rule 7.4(c) allows. ("Patent Attorney" is permitted for those admitted before the USPTO, under 7.4(b).) New York has **no state-run certification** for business law or contracts.
+- **✓ Rule 7.4(c) (current text):** A lawyer certified by a private organization **approved by the ABA** may say so only if the ad names the organization and prominently states: **"This certification is not granted by any governmental authority."** A lawyer certified by another state's official authority must name that state and state: **"This certification is not granted by any governmental authority within the State of New York."**
+  - **"Prominently" (7.4(c)(3)):** in writing, legible and **at least two font sizes larger** than the largest text stating the certification; spoken, no faster and no quieter than the certification itself.
+  - The longer disclaimer in older guides ("...not affiliated with any governmental authority. Certification is not a requirement for the practice of law...") is **superseded**; don't use it.
 - **Superlatives and ratings:** "Best," "#1," "top" are quality/comparison claims under 7.1(d) — permitted only if factually supportable and carrying the past-results disclaimer. Third-party ratings (Super Lawyers, Best Lawyers, Martindale) must accurately name the rating source, year, and not imply it was awarded by a court or bar.
-- **Rule 7.5(e):** A domain name, social handle, or trade name may not imply an ability to obtain results and must not be misleading. If the domain isn't the firm name, the firm name must also appear on the site.
+- **✓ Rule 7.5(b):** A private firm may not practice under a false, deceptive or misleading **trade name** or **domain name**, or a name misleading about who practices there. A domain like `winyourdeal.com` that implies results is misleading.
+  - The name of an LLC or LLP must include "LLC," "LLP" or a permitted equivalent ("PLLC"); a professional corporation must include "PC."
+  - No nonlawyer's name may appear in the firm name, nor the name of a Rule 5.8 nonlegal partner firm.
+  - A phone number containing a trade name, nickname, moniker or motto is allowed if it doesn't otherwise violate the Rules (7.5(b)(2)(vi)).
+  - Don't hold out a partnership that doesn't exist (7.5(c)).
 - **NYSBA Social Media Ethics Guidelines:** LinkedIn "Skills," "Specialties," and endorsement features can create 7.4 problems — use "Practice areas" / "Focus areas" and turn off or curate "specialist" endorsements.
 
-**What this skill outputs:** "Focuses on," "concentrates in," "practice is limited to" — never "specialist/specializes" unless an ABA-accredited certification is supplied (then the full 7.4(c) disclaimer is auto-inserted). Superlatives removed unless substantiated + disclaimed. Domain/handle suggestions screened for results implications.
+**What this skill outputs:** "Focuses on," "concentrates in," "practice is limited to" — never "specialist/specializes" unless an ABA-accredited certification is supplied (then the current 7.4(c) statement is inserted at the required size). Superlatives removed unless substantiated + disclaimed. Domain/handle suggestions screened for misleading or results-implying names.
 
 ---
 
@@ -68,8 +79,22 @@ Generates legally compliant marketing content for New York business law and cont
 **What every AI tool generates:** "$499 all-in LLC formation." "Flat-fee contract review." "Affordable business attorney." In New York these are especially misleading because of **LLC publication costs** (Moat 4) and NYC taxes.
 
 **What New York requires:**
-- **Rule 1.5(a):** No excessive fees. **Rule 1.5(b):** Communicate scope of representation and basis of fee/expenses before or within a reasonable time after commencing representation.
-- **22 NYCRR Part 1215:** A **written letter of engagement (or signed retainer agreement)** is required before or within a reasonable time after starting work, explaining scope, fees, expenses, and billing practices — unless the fee is expected to be **less than $3,000**, the services are of the same general kind previously rendered to and paid for by the client, or another exception applies.
+- **✓ Rule 1.5(a):** No excessive or illegal fees. **✓ Rule 1.5(b):** Communicate the scope of the representation and the basis or rate of the fee and expenses before, or within a reasonable time after, the representation begins. Communicate any later change too.
+- **✓ Rule 1.5(d)(4) — No nonrefundable retainers.** A New York lawyer may not charge a nonrefundable retainer fee. A reasonable minimum-fee clause is allowed only if it states in plain language when the fee is incurred and how it is calculated. Never market a flat fee or subscription as "nonrefundable."
+- **✓ Rule 7.1(j) and (l) — Advertised fixed fees.** A firm advertising a fixed fee must have a **written statement describing the scope of each advertised service** available to the public when the fee is published, and give it to the client at retention. It may not charge more than the advertised fee unless the client agrees **in writing** that the extra work wasn't covered by the ad.
+- **✓ Rule 7.1(m)–(n) — How long an advertised fee binds.** An advertised fee stays binding for at least 30 days, or longer depending on the medium.
+- **✓ Rule 7.1(b)(4) — Fee ranges.** Advertising a range of fees requires a free written scope statement for each service.
+- **✓ 22 NYCRR § 1215.1:** A **written letter of engagement** is required **before the representation begins**. It may come within a reasonable time afterwards only if giving it first is impracticable or the scope can't yet be determined. It must explain:
+  - the scope of services;
+  - fees, expenses and billing practices;
+  - where applicable, the client's right to arbitrate fee disputes under Part 137.
+
+  A signed written retainer agreement covering the same points may substitute. A **significant change** in scope or fee requires an updated letter.
+- **✓ 22 NYCRR § 1215.2 — Exceptions:**
+  - the fee is expected to be **under $3,000**;
+  - the services are of the same general kind previously provided to and paid for by the client;
+  - domestic-relations matters (Part 1400);
+  - the lawyer is admitted elsewhere with no New York office, or no material part of the services is performed in New York.
 - **22 NYCRR Part 137:** The engagement letter must advise the client of the right to arbitrate fee disputes under the Fee Dispute Resolution Program (generally disputes $1,000–$50,000).
 - **Common NY flat-fee traps:**
   - "LLC formation $X" without disclosing the **$200 DOS filing fee**, **LLC Law § 206 publication costs** (can exceed $1,000 in New York County), $50 Certificate of Publication filing fee (✓ LLC Law § 1101(f), (s)), registered agent fees (if any), and the annual **IT-204-LL filing fee** owed by partnership-taxed and disregarded LLCs with New York-source income ($25 minimum, scaled to prior-year NY-source gross income — ✓ Tax Law § 658(c)(3); ⚠️ VERIFY current brackets).
@@ -122,7 +147,7 @@ Generates legally compliant marketing content for New York business law and cont
 ### Moat 6: Rule 1.8(a) Equity-for-Fees (Business Transactions with Clients) Gate
 **The fastest-growing ethics risk in NYC startup law:** Silicon Alley firms increasingly take equity (stock, SAFEs, options) in lieu of or alongside fees.
 
-**What New York Rule 1.8(a) requires:**
+**What New York Rule 1.8(a) requires (✓ checked against current text):**
 - The transaction and terms are **fair and reasonable** to the client and **fully disclosed in writing** in a manner the client can reasonably understand.
 - The client is **advised in writing** of the desirability of seeking, and given a reasonable opportunity to seek, **independent counsel**.
 - The client gives **informed consent, in a writing signed by the client**, to the essential terms and the lawyer's role (including whether the lawyer represents the client in the transaction).
@@ -141,8 +166,26 @@ Generates legally compliant marketing content for New York business law and cont
 - **Judiciary Law §§ 478, 484, 485, 485-a, 495 (✓):** Practicing law without admission is a misdemeanor (§ 485). It becomes a class E felony (§ 485-a) when the person falsely holds themselves out as able to provide attorney-only services and causes more than $1,000 in loss. Corporations may not practice law (§ 495). "We do what LegalZoom does, but better" without explaining *what* a lawyer does differently misses the value proposition.
 - **False comparisons (Rule 7.1(d)):** Comparing your services with other providers requires factual support and the past-results disclaimer.
 - **Don't compete on speed** — compete on what licensed attorneys provide: legal advice, interpretation, negotiation, dispute counseling, ongoing compliance, attorney-client privilege.
-- **Rule 7.3 solicitation:** Targeted outreach (cold email, LinkedIn InMail, direct mail to a predetermined recipient whose primary purpose is retention) is a **solicitation**. It may not be made in person or by telephone/real-time interactive communication (except to close friends, relatives, former or existing clients); written solicitations must be **filed with the attorney disciplinary committee** of the judicial district where the lawyer maintains a principal office (Rule 7.3(c)) and carry the "Attorney Advertising" label. Retain copies.
-- **Rule 7.2(a) — No paying for referrals:** No payment or anything of value to a person or organization to recommend or obtain employment (limited exceptions, e.g., the reasonable cost of advertising, qualified lawyer-referral services). Reciprocal referral relationships with nonlawyer professionals must comply with **Rule 5.8** and must not be exclusive or undisclosed.
+- **✓ Rule 7.3 — Solicitation.** A "solicitation" is any ad aimed at a **specific recipient or group of recipients** whose main purpose is getting hired and where money is a significant motive. Cold email, LinkedIn InMail, targeted direct mail and outreach to a list of founders all qualify. A proposal sent in response to a specific request does not.
+  - **No in-person, phone or real-time interactive solicitation** (live chat, DMs), except to close friends, relatives, and former or existing clients (7.3(a)(1)).
+  - **File a copy with the attorney disciplinary committee** for the district or department of the firm's principal office **at the time it goes out** (7.3(c)(1)). Include a transcript of any audio and an English translation of any non-English solicitation.
+  - **Don't mention the filing** in the solicitation (7.3(c)(2)).
+  - **Keep the recipient list for 3 years** when a solicitation goes to predetermined recipients (7.3(c)(3)).
+  - Firm name, principal office address and phone number are required (7.3(h)), plus the "Attorney Advertising" label under 7.1(f).
+  - If outreach is prompted by a specific event affecting the recipient (a funding round, a lawsuit filing, a news item), **say how the firm got their name and learned of the need** (7.3(f)).
+  - The firm's own website is exempt from filing unless it targets people affected by a specific event (7.3(c)(5)).
+  - Never contact someone who has said they don't want to be solicited (7.3(a)(2)(ii)).
+- **✓ Rule 7.2(a) — No paying for referrals.** No payment or anything of value to anyone for recommending the firm, or as a reward for a recommendation that led to a hire. The only exceptions:
+  - usual and reasonable fees or dues of a qualified legal assistance organization;
+  - referral fees to another lawyer under Rule 1.5(g);
+  - referrals to a nonlegal professional under a Rule 5.8 arrangement, with **no** money, reward or fee-sharing for the referral.
+- **✓ Rule 5.8 — Formal arrangements with nonlawyer professionals** (e.g., a CPA firm), offering services together on a systematic and continuing basis, are allowed only if:
+  - the profession is on the Appellate Divisions' approved list (22 NYCRR § 1205.3);
+  - the nonlawyer has no ownership, investment or management role in the law practice;
+  - no legal fees are shared and no referral benefits are exchanged;
+  - each client is told about the relationship **before** being referred, gives **informed written consent**, and receives the "Statement of Client's Rights in Cooperative Business Arrangements" (§ 1205.4).
+
+  The firm name may not include the nonlegal firm's name (7.5(b)(3)).
 
 **What this skill outputs:** Competitive positioning based on attorney-only value. UPL boundary accurately drawn. Every cold-outreach template flagged "SOLICITATION — file under Rule 7.3(c) before sending" with the "ATTORNEY ADVERTISING" subject line. Referral-program content with no compensation for referrals.
 
@@ -197,19 +240,19 @@ Each module runs every draft through the Pre-Publish Gate (below) before output,
 |---|-------|------|
 | 1 | "Attorney Advertising" on home page / first page / mailer; "ATTORNEY ADVERTISING" in email subject | 7.1(f) |
 | 2 | Firm name + principal office address + phone present | 7.1(h) |
-| 3 | No guarantees, no results-implying slogans/nicknames/domains | 7.1(a),(c); 7.5(e) |
+| 3 | No guarantees, no results-implying slogans or misleading trade/domain names; no hidden meta tags that would violate the Rules | 7.1(a), (g); 7.5(b) |
 | 4 | Results, testimonials, comparisons, quality claims substantiated + "Prior results do not guarantee a similar outcome." | 7.1(d),(e) |
-| 5 | Testimonials: written client consent, matter not pending; FTC typicality disclosure | 7.1(d)(3); 16 CFR 255 |
-| 6 | No "specialist/specializes/certified" unless ABA-accredited + 7.4(c) disclaimer | 7.4 |
-| 7 | Fees: scope, inclusions/exclusions, government + publication fees disclosed | 1.5; Part 1215 |
+| 5 | Testimonials: informed written consent if the matter is pending; payment disclosed; client names only with prior written consent; FTC typicality disclosure | 7.1(b)(2), (c)(1), (e)(4); 16 CFR 255 |
+| 6 | No "specialist/specializes/certified" unless ABA-approved (or other-state) certification + current 7.4(c) statement, two font sizes larger | 7.4 |
+| 7 | Fees: scope, inclusions/exclusions, government and publication fees disclosed; written scope statement exists for any advertised fixed fee or range; nothing called "nonrefundable" | 1.5(b), 1.5(d)(4); 7.1(b)(4), (j), (l) |
 | 8 | Intake flow includes engagement letter + Part 137 arbitration notice | Part 1215; Part 137 |
 | 9 | LLC content mentions § 206 publication; no "tax-free NY" claims; Delaware foreign-registration caveat | LLC Law § 206, § 802 |
 | 10 | Non-compete content: no "ironclad"; BDO Seidman standard; pending-legislation caveat | Common law |
 | 11 | Equity-for-fees: 1.8(a) disclosure language present | 1.8(a) |
-| 12 | Targeted outreach flagged as solicitation → filing + label | 7.3 |
+| 12 | Targeted outreach flagged as solicitation: file at dissemination, keep recipient list 3 years, disclose source if event-triggered, no live/DM outreach | 7.3 |
 | 13 | No compensation for referrals; no confidential info in review replies | 7.2(a); 1.6 |
 | 14 | Capital-raising: Reg D/CF accurate; no guaranteed raise; no finder offers | Securities Act; Martin Act |
-| 15 | Retention reminder (3 yrs / 1 yr / 90-day website snapshots) | 7.1(k) |
+| 15 | Marked as a draft needing attorney pre-approval; retention reminder (3 years, 1 year, 90-day website snapshots) | 7.1(k) |
 
 ---
 

@@ -40,15 +40,15 @@
 | 4 | "We guarantee your contracts hold up in court" | 7.1(a) | Replaced with process/risk-reduction language |
 | 5 | "Contract Law Specialists" — no ABA-accredited certification | 7.4(a) | "Focused on commercial contracts" |
 | 6 | "NYC's #1" / "Best lawyers in Manhattan" unsubstantiated | 7.1(d),(e) | Removed |
-| 7 | "The Deal Closers" — motto implying results | 7.1(c) | Removed |
-| 8 | `winyourdeal.com` domain implies results | 7.5(e) | Recommend `hartwellosei.com`; firm name on all pages |
+| 7 | "The Deal Closers" — motto implying results | 7.1(a) | Removed |
+| 8 | `winyourdeal.com` domain implies results | 7.5(b)(1)(ii) | Recommend `hartwellosei.com`; firm name on all pages |
 | 9 | "$3.2M saved" result with no disclaimer / typicality context | 7.1(d),(e); 16 CFR 255 | Removed from hero; if used in case studies, add facts + "Prior results do not guarantee a similar outcome." |
-| 10 | Testimonial — no written consent on file, no disclaimer | 7.1(d)(3),(e) | Held pending written consent; disclaimer required on use |
+| 10 | Testimonial with no disclaimer, consent status unknown | 7.1(d)(3), (e) | Held until consent is confirmed (in writing if the matter is pending); disclaimer required on use |
 | 11 | "$499 all-in" omits DOS fee + § 206 publication costs | 1.5; 7.1(a) | Scope + "plus state filing and publication fees" disclosure |
 | 12 | "No ongoing hassle" / "tax-friendly" / "skip NY's rules" via Delaware | 7.1(a); LLC Law §§ 206, 802; Tax Law | Biennial statement, publication, NY/NYC tax, foreign-registration caveats |
 | 13 | "Ironclad non-competes" | 7.1(a); *BDO Seidman* | Reasonableness-standard language + legislation caveat |
 | 14 | Equity-for-fees framed as a favor; "we'll get you funded" | 1.8(a); Securities Act / GBL § 359-e | 1.8(a) disclosure; securities-counsel framing; investor-network claim removed |
-| 15 | Cold email = solicitation not filed; gift card for referrals | 7.3(c); 7.2(a) | Filing flag added; referral compensation removed |
+| 15 | Cold email = solicitation not filed, and prompted by Crunchbase without saying so; gift card for referrals | 7.3(c), (f); 7.2(a) | Filing flag added; source disclosed; referral compensation removed |
 
 ---
 
@@ -59,7 +59,7 @@
 > Headline 2: Commercial Contracts & LLC Formation
 > Headline 3: Clear Scope. Written Fee Agreements.
 > Description 1: Contract drafting and review focused on clear terms and risk reduction. Manhattan office. Call (212) 555-0142.
-> Description 2: NY LLC formation from $499 in legal fees, plus state filing and required newspaper publication costs. Scope provided in writing.
+> Description 2: NY LLC formation from $499 in legal fees, plus state filing and required newspaper publication costs. Written scope statement available on request.
 > *(Landing page carries the "Attorney Advertising" label and firm identification block.)*
 
 **Homepage hero** (`hartwellosei.com`)
@@ -86,10 +86,11 @@
 **Restrictive covenants (excerpt)**
 > New York courts enforce non-competes only when they are reasonable in time and scope and protect a legitimate interest such as trade secrets or client relationships. Legislation to restrict non-competes has been proposed repeatedly in New York; we'll review where the law stands when we draft or evaluate your agreement.
 
-**Cold email** — ⚠️ **SOLICITATION: file with the attorney disciplinary committee under Rule 7.3(c) before sending; retain a copy.**
+**Cold email** — ⚠️ **SOLICITATION: file a copy with the attorney disciplinary committee under Rule 7.3(c) when it is sent (don't mention the filing in the email); keep the recipient list for 3 years.**
 > **Subject:** ATTORNEY ADVERTISING — New York LLC publication deadline: a quick guide for founders
 >
 > Hi [First name],
+> We came across your company in a public startup database and are reaching out to founders of newly formed New York companies.
 > New York LLCs must complete newspaper publication within 120 days of formation or lose their authority to do business. We put together a one-page guide on the steps and typical costs by county: [link].
 > If you'd like to talk through formation, contracts, or founder agreements, you can book a consultation here: [link].
 >
@@ -105,7 +106,7 @@
 - Moat 4: § 206 publication, biennial, LLC Transparency Act, NY/NYC tax, Delaware foreign-registration caveat.
 - Moat 5: Non-compete reasonableness language + legislation caveat.
 - Moat 6: 1.8(a) equity disclosure.
-- Moat 7: Solicitation filing flag; referral gift cards removed (7.2(a)).
+- Moat 7: Solicitation filing flag; source-of-contact line added (7.3(f)); referral gift cards removed (7.2(a)).
 - Moat 8: Investor-network claim removed; securities-counsel framing.
 - Retention: Archive all pieces (3 yrs ads / 1 yr email; website snapshot now and every 90 days).
 - **⚠️ VERIFY before publishing:** current LLC Transparency Act deadlines, non-compete bill status, NY County publication cost range.
