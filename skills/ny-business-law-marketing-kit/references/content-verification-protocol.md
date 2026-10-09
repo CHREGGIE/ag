@@ -58,6 +58,15 @@ Verify every one of these before it goes in a draft:
 - **General information, not advice:** blog content explains the law generally and says so; it never tells a reader what to do in their situation.
 - Run the skill's **Pre-Publish Gate** (in `SKILL.md`) on every piece — blogs are attorney advertising when they promote the firm.
 
+## 4a. Metadata and markup are content too
+
+Google's AI-content guidance requires human fact-checking of everything that can appear in Search, so apply sections 2–4 to:
+- the `<title>`, meta description and Open Graph text;
+- image alt text;
+- structured data (JSON-LD).
+
+The values in each must match the verified page. See `references/google-ai-content-guidelines.md` for the full Google checklist (scaled-content limits, the added-value test, reviewer bylines, AI-image rules).
+
 ## 5. Record what you checked
 
 For every piece, deliver a **Verification Log** with the draft:

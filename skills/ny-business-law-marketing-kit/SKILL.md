@@ -254,7 +254,10 @@ Each module runs every draft through the Pre-Publish Gate (below) before output,
 - **Practice area pages** (formation & governance, commercial contracts, M&A, venture/startups, restrictive covenants, commercial disputes) — Moats 3–5 and 8 applied.
 - **Attorney bios:** admissions (court, year), education, focus areas; "specialist" only per 7.4(c); bar association memberships described accurately (NYSBA Business Law Section, NYC Bar committees).
 - **FAQ pages** written for AI-search/featured snippets ("Do I have to publish my New York LLC?", "Is a non-compete enforceable in New York?").
-- **JSON-LD:** `LegalService` + `Attorney` (Person) + `FAQPage` + `BreadcrumbList`; `areaServed` by county/borough; no `aggregateRating` from self-hosted reviews (Google policy) and no rating markup implying results.
+- **JSON-LD:** `LegalService` (or its subtype `Attorney`) for the firm, `Person` for each lawyer, `Article` for posts (real author/reviewer, `datePublished`, `dateModified`), `BreadcrumbList`; `areaServed` by county or borough.
+  - Mark up only what's visible on the page, and validate with Google's Rich Results Test before publishing.
+  - No `aggregateRating` or review markup from self-hosted reviews, and no rating markup implying results.
+  - `FAQPage` is allowed, but Google shows FAQ rich results only for government and health sites, so don't add it to chase a rich result. See `references/google-ai-content-guidelines.md`.
 
 ### Module 4 — Reputation & Referral Program
 - **Review request sequence** (post-matter): ask all clients (no review gating), no incentives conditioned on sentiment (FTC 16 CFR Part 465), no ghost-written reviews, respond to reviews without revealing confidential information (**Rule 1.6** — never confirm client status or matter details in public replies).
@@ -264,12 +267,17 @@ Each module runs every draft through the Pre-Publish Gate (below) before output,
 ### Module 5 — Blog & Educational Content (AG)
 - **Topics:** NY legal explainers for business owners and founders, e.g. "Do I have to publish my New York LLC?", "Are non-competes enforceable in New York?", "What the NY LLC Transparency Act means for your company".
 - **Workflow:**
-  1. Outline the claims the post will make.
-  2. Verify each one under the Source Verification protocol above.
+  1. Brief the post: the reader's question, the "added value" it will offer (at least two items from `references/google-ai-content-guidelines.md` §2, one being verified New York-specific detail), and the attorney's own input. Never invent attorney insight.
+  2. Outline the claims the post will make, and verify each one under the Source Verification protocol above.
   3. Write, mirroring the source language and date-stamping moving facts.
-  4. Add official-source links and a short "This post is general information, not legal advice" line.
-  5. Run the Pre-Publish Gate.
-  6. Attach the Verification Log.
+  4. Add official-source links, a "general information, not legal advice" line, a named reviewing attorney with review date, a last-updated date, and the how-it-was-made note (playbook §5).
+  5. Write and verify the title, meta description, image alt text and JSON-LD the same way as the body; validate the structured data.
+  6. Run the Pre-Publish Gate.
+  7. Attach the Verification Log, and get the attorney's written sign-off (Rule 7.1(k)).
+- **Google's AI-content rules (`references/google-ai-content-guidelines.md`):**
+  - **No scaled content:** no templated pages that only swap a borough or city, no bulk FAQ or glossary pages, no near-duplicate keyword-variant posts.
+  - **Pace:** publish only as fast as an attorney can review.
+  - **Images:** no AI-generated people presented as lawyers, clients or judges without disclosure (Rule 7.1(c)(3)). AI images carry IPTC `trainedAlgorithmicMedia` metadata.
 - **Advertising rules still apply:** a blog that promotes the firm is attorney advertising. Apply "Attorney Advertising" labeling per Rule 7.1(f), the firm identification block, and the past-results disclaimer for any case results.
 
 ---
@@ -294,6 +302,7 @@ Each module runs every draft through the Pre-Publish Gate (below) before output,
 | 14 | Capital-raising: Reg D/CF accurate; no guaranteed raise; no finder offers | Securities Act; Martin Act |
 | 15 | Marked as a draft needing attorney pre-approval; retention reminder (3 years, 1 year, 90-day website snapshots) | 7.1(k) |
 | 16 | Every legal fact verified per the Source Verification protocol; no ⚠️ VERIFY flags left; Verification Log attached | Content Verification Protocol |
+| 17 | Google AI-content rules met: passes the added-value test; not templated or scaled; title, meta description, alt text and JSON-LD fact-checked; structured data validated; named reviewing attorney, review and updated dates, how-it-was-made note; no undisclosed AI people | Google Search guidance on generative AI content; spam policies; 7.1(c)(3), (g), (k) |
 
 ---
 
