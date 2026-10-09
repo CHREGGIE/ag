@@ -63,22 +63,34 @@ Rule 7.1(g) also bars meta tags or other hidden code that would violate the adve
 - **FAQ markup:** Google limits FAQ rich results to well-known government and health sites (since 2023 — re-check the current feature policy). FAQPage markup on a law-firm page is still allowed, but don't expect a rich result and never add it just to chase one.
 - `LegalService`, `Attorney`, `Person`, `Article`, and `BreadcrumbList` are appropriate types. Article markup should carry the real author and reviewer and `datePublished` / `dateModified`.
 
-## 5. Give readers context about how the content was made
+## 5. Ask-first items: how-it-was-made context and AI images
 
-Every AG article carries:
+**Ask the user before applying any item in this section.** Don't add bylines, review lines, dates, source links, the AI note, image metadata or image disclosures on your own. Instead:
 
-- **A named, real author or reviewing attorney:** "Reviewed by [Attorney Name], admitted in New York, on [date]." This also satisfies the Rule 7.1(k) requirement that ads be pre-approved by a lawyer.
-- **"Last updated" date**, and an "As of [month year]" stamp on time-sensitive facts.
-- **Sources:** links to the official statutes, rules, and agency pages relied on.
-- **A short note on how it was made**, where it fits the audience. Suggested wording:
-  > *This article was drafted with the help of AI tools, fact-checked against official New York sources, and reviewed and edited by [Attorney Name]. It is general information, not legal advice.*
-- **An author bio page** with the attorney's admissions, education, and practice focus (Rule 7.1(b)(1) permits this information).
+1. Before finalizing the draft, list the items below in one question, with the recommended choice for each and the reason.
+2. **Mark the legally required items clearly.** Say plainly which rule requires them and what happens if they are declined (the piece can't pass the Pre-Publish Gate).
+3. **Wait for the answer.** Apply only what the user confirms, using the wording they approve.
+4. Record the choices in the Verification Log ("Ask-first choices: …").
 
-**AI images:**
-- Prefer real photos of the firm's own attorneys and office.
-- Any AI-generated image must carry IPTC `DigitalSourceType` = `trainedAlgorithmicMedia` metadata. Google requires this for Merchant Center and recommends image metadata generally. Add it to alt text context or a caption where helpful.
-- **Never use an AI image of a person presented as a lawyer, client, or judge**, or of a "scene" presented as real. Rule 7.1(c)(3) prohibits portraying the lawyer, firm members, clients, or a judge with actors, or showing fictionalized scenes, **without disclosure**. Treat AI-generated people the same way: avoid them, or disclose them clearly ("AI-generated illustration").
-- Never use fake client stories or testimonials, AI-written or otherwise (Rules 7.1(a), (c)(1), (d)–(e); FTC rules).
+If the user has already given standing instructions for these items in this conversation, follow them without re-asking, and say which standing choice you applied.
+
+### 5a. Reader context
+
+| Item | Recommended | Required? |
+|---|---|---|
+| **Named reviewing attorney and review date**, e.g. "Reviewed by [Attorney Name], admitted in New York, on [date]." | Yes | A lawyer's pre-approval of every ad is required by Rule 7.1(k). Showing it on the page is the user's choice; the approval itself is not optional |
+| **"Last updated" date**, plus "As of [month year]" on time-sensitive facts | Yes | No; strongly recommended for accuracy |
+| **Links to official sources** (statutes, rules, agency pages) | Yes | No |
+| **How-it-was-made note**, e.g. *"This article was drafted with the help of AI tools, fact-checked against official New York sources, and reviewed and edited by [Attorney Name]. It is general information, not legal advice."* | Yes | No. Google suggests it; the wording is the user's call |
+| **Author bio page** (admissions, education, practice focus; allowed by Rule 7.1(b)(1)) | Yes | No |
+
+### 5b. Images and client stories
+
+| Item | Recommended | Required? |
+|---|---|---|
+| **IPTC `DigitalSourceType` = `trainedAlgorithmicMedia` metadata** on AI-generated images | Yes | Not legally required for a law-firm site (Google requires it only for Merchant Center), but recommended |
+| **Disclosure on any AI-generated person** shown as a lawyer, firm member, client or judge, or any fictionalized scene (e.g., "AI-generated illustration") | Prefer real photos instead | **Yes, Rule 7.1(c)(3)** bars portraying these people or fictional scenes without disclosure. If the user declines disclosure, don't use the image |
+| **Any client story, testimonial or case result** | Ask whether it is real, which client, and whether written consent exists | **Fabricated stories are never allowed** (Rules 7.1(a), (c)(1), (d)–(e); FTC rules). Real ones need factual support, the disclaimer "Prior results do not guarantee a similar outcome", and informed written consent if the matter is pending. Never invent or "illustrate" one, even if asked; offer a clearly labeled hypothetical instead |
 
 ## 6. Workflow for each AG article
 
@@ -88,9 +100,10 @@ Every AG article carries:
 4. **Edit for voice:** cut generic filler and repeated summaries; make sure the page answers the question early and specifically.
 5. **Metadata:** write the title, meta description, alt text, and JSON-LD; verify them (section 3); validate the structured data (section 4).
 6. **Attorney review and sign-off:** the attorney reads the whole page, including metadata, and approves it in writing (Rule 7.1(k)).
-7. **Publish** with byline, review line, dates, sources, and the how-it-was-made note.
-8. **Archive** a copy (Rule 7.1(k): website snapshots at least every 90 days) along with the Verification Log.
-9. **Re-check every 90 days**, or sooner when a source changes; update `dateModified` only when content actually changes.
+7. **Ask-first check (section 5):** ask the user which reader-context and image items to apply; apply only what they confirm.
+8. **Publish** with the confirmed items.
+9. **Archive** a copy (Rule 7.1(k): website snapshots at least every 90 days) along with the Verification Log.
+10. **Re-check every 90 days**, or sooner when a source changes; update `dateModified` only when content actually changes.
 
 ## 7. Red flags — stop and fix before publishing
 
@@ -100,4 +113,4 @@ Every AG article carries:
 - Title or meta description promising an outcome.
 - Structured data that doesn't match the page or fails validation.
 - AI-generated people or "client" images without disclosure.
-- No named reviewer or no last-updated date.
+- Any ask-first item (section 5) applied without the user's confirmation, or a legally required one declined.

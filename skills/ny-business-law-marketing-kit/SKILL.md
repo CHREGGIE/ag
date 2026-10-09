@@ -270,14 +270,18 @@ Each module runs every draft through the Pre-Publish Gate (below) before output,
   1. Brief the post: the reader's question, the "added value" it will offer (at least two items from `references/google-ai-content-guidelines.md` §2, one being verified New York-specific detail), and the attorney's own input. Never invent attorney insight.
   2. Outline the claims the post will make, and verify each one under the Source Verification protocol above.
   3. Write, mirroring the source language and date-stamping moving facts.
-  4. Add official-source links, a "general information, not legal advice" line, a named reviewing attorney with review date, a last-updated date, and the how-it-was-made note (playbook §5).
+  4. Add a "general information, not legal advice" line.
+     - **Ask first** before adding the reader-context items: reviewing-attorney byline and review date, last-updated date, official-source links, how-it-was-made note, author bio (playbook §5a).
+     - Say which are recommended, apply only what the user confirms, and record the choices in the Verification Log.
   5. Write and verify the title, meta description, image alt text and JSON-LD the same way as the body; validate the structured data.
   6. Run the Pre-Publish Gate.
   7. Attach the Verification Log, and get the attorney's written sign-off (Rule 7.1(k)).
 - **Google's AI-content rules (`references/google-ai-content-guidelines.md`):**
   - **No scaled content:** no templated pages that only swap a borough or city, no bulk FAQ or glossary pages, no near-duplicate keyword-variant posts.
   - **Pace:** publish only as fast as an attorney can review.
-  - **Images:** no AI-generated people presented as lawyers, clients or judges without disclosure (Rule 7.1(c)(3)). AI images carry IPTC `trainedAlgorithmicMedia` metadata.
+  - **Images and client stories — ask first (playbook §5b):** ask the user before adding IPTC `trainedAlgorithmicMedia` metadata or an AI-image disclosure, and before using any client story, testimonial or result.
+    - Tell them plainly what's legally required: Rule 7.1(c)(3) bars undisclosed AI portrayals of lawyers, clients or judges, so if they decline disclosure, don't use the image.
+    - Never fabricate a client story (Rules 7.1(a), (d)–(e)); offer a labeled hypothetical instead.
 - **Advertising rules still apply:** a blog that promotes the firm is attorney advertising. Apply "Attorney Advertising" labeling per Rule 7.1(f), the firm identification block, and the past-results disclaimer for any case results.
 
 ---
@@ -302,7 +306,7 @@ Each module runs every draft through the Pre-Publish Gate (below) before output,
 | 14 | Capital-raising: Reg D/CF accurate; no guaranteed raise; no finder offers | Securities Act; Martin Act |
 | 15 | Marked as a draft needing attorney pre-approval; retention reminder (3 years, 1 year, 90-day website snapshots) | 7.1(k) |
 | 16 | Every legal fact verified per the Source Verification protocol; no ⚠️ VERIFY flags left; Verification Log attached | Content Verification Protocol |
-| 17 | Google AI-content rules met: passes the added-value test; not templated or scaled; title, meta description, alt text and JSON-LD fact-checked; structured data validated; named reviewing attorney, review and updated dates, how-it-was-made note; no undisclosed AI people | Google Search guidance on generative AI content; spam policies; 7.1(c)(3), (g), (k) |
+| 17 | Google AI-content rules met: passes the added-value test; not templated or scaled; title, meta description, alt text and JSON-LD fact-checked; structured data validated; ask-first items (reviewer byline, dates, sources, AI note, image metadata and disclosures, client stories) confirmed with the user before being applied; no undisclosed AI people; no fabricated client stories | Google Search guidance on generative AI content; spam policies; 7.1(c)(3), (g), (k) |
 
 ---
 
