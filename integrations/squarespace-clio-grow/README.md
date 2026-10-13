@@ -1,92 +1,97 @@
-# Squarespace → Clio Grow lead relay
+# Squarespace → Clio Grow leads (via Zapier)
 
-Sends every Squarespace form submission to the **Clio Grow Lead Inbox** as a new lead.
+Sends every Squarespace form submission to the **Clio Grow Lead Inbox** as a new lead,
+using the firm's existing Zapier account.
 
 ```
-Visitor submits form ─► Squarespace (stores it + emails you, as today)
-          │
-          └─ footer snippet ─► /api/clio-lead (Vercel) ─► grow.clio.com/inbox_leads
-                                 holds the Clio token        new lead in Grow Inbox
+Squarespace form ─► Zap trigger: Squarespace "New Form Submission"
+                  ─► Code by Zapier step (zapier/code-step.js) ─► grow.clio.com/inbox_leads
 ```
 
-Squarespace has no form webhook or forms API, so a small script on the site copies
-the submitted fields. It forwards them only after Squarespace shows its "thank you"
-message, so a submission that fails validation never creates a lead. The Clio token
-lives on the relay, never in the page, so nobody can read it and spam your Inbox.
+Squarespace keeps storing submissions and sending its email notifications. The Zap only
+adds a copy in Grow, so a Zap error never loses a lead.
 
-## Files
+Zapier has no built-in Clio Grow "create lead" action, so the Zap posts to Clio's Lead
+Inbox API. It does that in a small Code step rather than a hand-typed Webhooks body.
+The Code step builds the JSON itself, so quotes or line breaks in a prospect's message
+can't break the request. It also splits a single "Name" field into first and last name,
+which Clio requires.
 
-| File | Purpose |
-|------|---------|
-| `squarespace/footer-snippet.html` | Paste into Squarespace Code Injection (footer) |
-| `api/clio-lead.js` | Vercel serverless function that checks the origin and forwards to Clio |
-| `lib/lead.js` | Maps form labels to Clio fields (first/last name, email, phone, message) |
-| `test/lead.test.js` | `npm test` |
+## Setup (one Zap per form, about 10 minutes each)
 
-## Field mapping
+1. **Get the Clio token.** In Clio Grow: Settings › Integrations (Settings › Inbox in newer
+   accounts) › *Lead capture / Inbox lead token*. Copy it.
+2. **Create a Squarespace API key.** In Squarespace: Settings › Developer Tools › Developer
+   API Keys › Generate Key, with **Forms** permission. Zapier asks for it once.
+3. **Trigger.** New Zap › app **Squarespace** › event **New Form Submission**. Connect the
+   site, pick the form, and click Test. Squarespace sends a sample submission.
+4. **Action.** Add **Code by Zapier** › **Run JavaScript**.
+   - **Input Data:** add these rows (key on the left, value on the right):
 
-| Squarespace field label (case-insensitive) | Clio Grow field |
+     | Key | Value |
+     |---|---|
+     | `token` | paste the Clio token (typed, not mapped) |
+     | `source` | e.g. `Website – Contact Us` (shown as the lead source in Grow) |
+     | `pageUrl` | the page the form is on, e.g. `https://www.yourfirm.com/contact` |
+     | `firstName` / `lastName` | map Squarespace's First Name / Last Name |
+     | `name` | *only if the form has a single Name field* |
+     | `email` | map Email |
+     | `phone` | map Phone |
+     | `message` | map the message / "How can we help" field |
+     | `extra_<Label>` | any other field, e.g. `extra_Practice Area` → Practice Area |
+     | `region` | *only if not US:* `eu`, `ca` or `au` (match your Grow login URL) |
+
+   - **Code:** paste all of [`zapier/code-step.js`](zapier/code-step.js).
+5. **Test the step**, then open the Clio Grow Inbox and check the test lead arrived with
+   the right name, email, phone and message. Delete it, then **Publish** the Zap.
+6. Repeat 3–5 for each other form (change `source` so Grow shows which form a lead came
+   from). Leave newsletter-only sign-ups out unless you want them in Grow as leads.
+
+### When a run fails
+
+The Code step makes the Zap run fail on purpose, so Zapier emails you and the run can be
+replayed from **Zap history**:
+
+| Error | Meaning |
 |---|---|
-| Name block (First / Last) or "First Name", "Last Name" | `from_first`, `from_last` |
-| A single "Name" / "Full Name" field | split on the first space |
-| Anything containing "email" | `from_email` |
-| "Phone", "Mobile", "Cell", "Tel" | `from_phone` |
-| "Message", "How can we help", "Comments", "Details", "Question"… | `from_message` |
-| **Every other field** (practice area, county, checkboxes…) | appended to `from_message` as `Label: value` |
-| Page the form was on | `referring_url` |
-| `LEAD_SOURCE` + form title (e.g. "Website – Contact Us") | `from_source` |
-
-A submission with neither an email nor a phone is rejected. Clio requires a first name,
-last name and message, so blanks are filled with "(no last name)" etc.
-
-## Setup (about 15 minutes)
-
-1. **Get the Clio token.** In Clio Grow: Settings › Integrations (or Settings › Inbox in
-   newer accounts) › *Lead capture / Inbox lead token*. Copy it.
-2. **Deploy the relay to Vercel.** Create a Vercel project with *Root Directory* set to
-   `integrations/squarespace-clio-grow`. Add these environment variables:
-
-   | Variable | Value |
-   |---|---|
-   | `CLIO_INBOX_LEAD_TOKEN` | the token from step 1 |
-   | `ALLOWED_ORIGINS` | your site, both forms: `https://www.yourfirm.com,https://yourfirm.com` |
-   | `CLIO_REGION` | `us` (default), `eu`, `ca` or `au` (match your Grow login URL) |
-   | `LEAD_SOURCE` | optional, default `Website` |
-
-   The endpoint is `https://<project>.vercel.app/api/clio-lead`.
-3. **Add the snippet.** Squarespace › Settings › Developer Tools › Code Injection ›
-   **Footer**: paste `squarespace/footer-snippet.html` and change `RELAY_URL` to the
-   endpoint from step 2. (Code Injection needs a Business plan or higher.) To leave a
-   form out, such as a newsletter sign-up, add its title to `SKIP_FORMS`.
-4. **Test.** Submit each form on the live site with a test name, then check the Clio
-   Grow Inbox. Delete the test leads afterwards. If nothing arrives, check the Vercel
-   function logs: `403` means `ALLOWED_ORIGINS` doesn't match the site address exactly;
-   `502` means Clio rejected the push (wrong token or region).
-
-Squarespace's own form storage and email notifications keep working, so a relay
-outage never loses a lead; it only skips the automatic copy into Grow.
+| `Clio Grow returned 401` | wrong or old token: copy it again from Grow |
+| `Clio Grow returned 422 …` | Clio rejected a field; the message names it |
+| `no email or phone` | the submission had no way to contact the person, so it wasn't sent |
 
 ## Privacy
 
-Form contents from prospective clients are confidential. The relay keeps nothing:
-it doesn't store submissions and logs only error status, never names or messages.
+Prospective-client submissions are confidential. They pass through Zapier, which keeps
+Zap history (including field values) for its retention period. Check that this is
+acceptable under the firm's vendor/confidentiality policy. Zap history can be deleted
+from the Zapier account, and anyone with edit access to the Zap can see the Clio token.
 
 ## ⚠️ VERIFY before go-live
 
-- **Clio's field names.** The payload follows Clio's Lead Inbox API
-  (`inbox_lead` with `from_first`, `from_last`, `from_email`, `from_phone`,
-  `from_message`, `referring_url`, `from_source`, plus `inbox_lead_token`). Clio's
-  developer site couldn't be loaded when this was written, so the names were confirmed
-  from Clio's help articles and existing client libraries. Compare them with
-  <https://docs.developers.clio.com/guides/clio-grow/lead-inbox-api/> and do the
-  step 4 test.
-- **Squarespace markup.** The snippet detects success by the form being replaced or by a
-  `form-submission-text` element. If Squarespace changes its form markup, leads stop
-  reaching Grow. Your email notifications still arrive, but re-run the step 4 test
-  after any Squarespace template change.
+- **Clio's field names.** The payload follows Clio's Lead Inbox API (`inbox_lead_token`
+  plus `inbox_lead` with `from_first`, `from_last`, `from_email`, `from_phone`,
+  `from_message`, `referring_url`, `from_source`). Clio's developer site couldn't be
+  loaded when this was written, so the names were taken from Clio's help articles and
+  existing client libraries. The step 5 test confirms them; see
+  <https://docs.developers.clio.com/guides/clio-grow/lead-inbox-api/>.
+- **Squarespace field names in Zapier.** The names Zapier shows for each form field come
+  from your form's labels; map by what you see in the trigger test.
 
-## No-code alternative
+## Tests
 
-Squarespace form *Storage › Zapier* → Zapier "Webhooks by Zapier" POST to
-`https://grow.clio.com/inbox_leads` with the same JSON body. It needs no code but
-requires a paid Zapier plan, and each form has to be connected separately.
+`npm test` runs `zapier/code-step.js` the way Code by Zapier does, with a fake Clio.
+
+## Alternative without Zapier
+
+`squarespace/footer-snippet.html` + `api/clio-lead.js` (+ `lib/lead.js`) is a self-hosted
+version: a Squarespace Code Injection script sends submissions to a Vercel function that
+holds the token and posts to Clio. It covers every form at once and avoids storing
+submissions at Zapier, but it's more to maintain. Setup:
+
+1. Deploy this folder to Vercel with env vars `CLIO_INBOX_LEAD_TOKEN`,
+   `ALLOWED_ORIGINS` (e.g. `https://www.yourfirm.com,https://yourfirm.com`), and
+   optional `CLIO_REGION` and `LEAD_SOURCE`.
+2. Paste the snippet into Settings › Developer Tools › Code Injection › Footer (Business
+   plan or higher) and set `RELAY_URL` to `https://<project>.vercel.app/api/clio-lead`.
+
+The snippet relies on Squarespace's form markup to detect a successful submission, so
+re-test after template changes.

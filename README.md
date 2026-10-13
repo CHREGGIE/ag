@@ -18,4 +18,4 @@ Google's rules on AI-generated content (no scaled or templated pages, human fact
 
 | Integration | Path |
 |-------------|------|
-| Squarespace form leads → Clio Grow Lead Inbox | [`integrations/squarespace-clio-grow/`](integrations/squarespace-clio-grow/README.md) |
+| Squarespace form leads → Clio Grow Lead Inbox (Zapier) | [`integrations/squarespace-clio-grow/`](integrations/squarespace-clio-grow/README.md) |
