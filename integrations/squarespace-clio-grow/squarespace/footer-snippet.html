@@ -1,0 +1,97 @@
+<!--
+  Squarespace → Clio Grow lead relay.
+  Paste into Squarespace: Settings › Developer Tools › Code Injection › FOOTER.
+  Set RELAY_URL to your deployed Vercel endpoint before pasting.
+
+  How it works: when a visitor submits any Squarespace form block, this copies the
+  field labels and values. It only forwards them once Squarespace shows its
+  "thank you" state, so failed validation never creates a lead. Squarespace's own
+  form storage and email notifications keep working unchanged.
+-->
+<script>
+(function () {
+  var RELAY_URL = "https://YOUR-PROJECT.vercel.app/api/clio-lead";
+  var SKIP_FORMS = []; // optional: form block titles to ignore, e.g. ["Newsletter"]
+
+  function labelFor(el, form) {
+    if (el.id) {
+      var l = form.querySelector('label[for="' + CSS.escape(el.id) + '"]');
+      if (l) return l.textContent;
+    }
+    var by = el.getAttribute("aria-labelledby");
+    if (by) {
+      var t = by.split(" ").map(function (id) {
+        var n = document.getElementById(id);
+        return n ? n.textContent : "";
+      }).join(" ");
+      if (t.trim()) return t;
+    }
+    var wrap = el.closest("label");
+    if (wrap) return wrap.textContent;
+    var fs = el.closest("fieldset");
+    var legend = fs && fs.querySelector("legend");
+    return (legend && legend.textContent) || el.getAttribute("aria-label") ||
+      el.placeholder || el.name || "";
+  }
+
+  function capture(form) {
+    var fields = [];
+    form.querySelectorAll("input, select, textarea").forEach(function (el) {
+      var type = (el.type || "").toLowerCase();
+      if (["hidden", "submit", "button", "password", "file"].indexOf(type) > -1) return;
+      if ((type === "checkbox" || type === "radio") && !el.checked) return;
+      if (!el.value) return;
+      var label = labelFor(el, form).replace(/\*/g, "").replace(/\s+/g, " ").trim();
+      // Squarespace "Name" fields use fname/lname inputs; keep those names
+      // so the relay can tell first from last even when labels are generic.
+      if (el.name === "fname" || el.name === "lname") label = el.name;
+      fields.push({ label: label, value: el.value });
+    });
+    return fields;
+  }
+
+  function formTitle(block) {
+    var h = block.querySelector(".form-title, h2, h3");
+    return h ? h.textContent.trim() : "";
+  }
+
+  function send(payload) {
+    var body = JSON.stringify(payload);
+    try {
+      fetch(RELAY_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: body,
+        keepalive: true,
+        mode: "cors",
+      }).catch(function () {});
+    } catch (e) {}
+  }
+
+  function succeeded(block, form) {
+    return !form.isConnected ||
+      !!block.querySelector(".form-submission-text, [class*='submission-text'], [class*='form-success']");
+  }
+
+  document.addEventListener("submit", function (e) {
+    var form = e.target;
+    if (!(form instanceof HTMLFormElement)) return;
+    var block = form.closest(".sqs-block-form, .form-block, .sqs-block") || form.parentElement;
+    var title = formTitle(block);
+    if (SKIP_FORMS.indexOf(title) > -1) return;
+
+    var payload = { fields: capture(form), pageUrl: location.href, formName: title };
+    var sent = false;
+    var obs = new MutationObserver(function () {
+      if (!sent && succeeded(block, form)) {
+        sent = true;
+        obs.disconnect();
+        send(payload);
+      }
+    });
+    obs.observe(block, { childList: true, subtree: true });
+    // Stop watching after 30s (validation error or abandoned submit).
+    setTimeout(function () { obs.disconnect(); }, 30000);
+  }, true);
+})();
+</script>

@@ -1,0 +1,10 @@
+{
+  "name": "squarespace-clio-grow",
+  "private": true,
+  "type": "module",
+  "description": "Relays Squarespace form submissions to the Clio Grow Lead Inbox",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}
