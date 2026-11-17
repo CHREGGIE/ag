@@ -1,36 +1,36 @@
 <!--
   Squarespace → Clio Grow lead relay.
   Paste into Squarespace: Settings › Developer Tools › Code Injection › FOOTER.
-  Set RELAY_URL to your deployed Vercel endpoint before pasting.
+  Set RELAY_URL to your Cloudflare Worker address before pasting.
 
-  How it works: when a visitor submits any Squarespace form block, this copies the
-  field labels and values. It only forwards them once Squarespace shows its
-  "thank you" state, so failed validation never creates a lead. Squarespace's own
-  form storage and email notifications keep working unchanged.
+  When a visitor submits any Squarespace form, this copies the field labels and
+  values and sends them to the Worker once the submission has gone through.
+  Squarespace's own form storage and email notifications keep working.
 -->
 <script>
 (function () {
-  var RELAY_URL = "https://YOUR-PROJECT.vercel.app/api/clio-lead";
-  var SKIP_FORMS = []; // optional: form block titles to ignore, e.g. ["Newsletter"]
+  var RELAY_URL = "https://clio-lead.YOUR-SUBDOMAIN.workers.dev";
+  var SKIP_FORMS = []; // form titles to ignore, e.g. ["Newsletter"]
+  var FALLBACK_MS = 6000; // send anyway after this if the form looks valid
+
+  var pending = new WeakMap(); // form -> cancel function for its last submit
+
+  function text(n) { return n ? n.textContent : ""; }
 
   function labelFor(el, form) {
     if (el.id) {
       var l = form.querySelector('label[for="' + CSS.escape(el.id) + '"]');
-      if (l) return l.textContent;
+      if (l) return text(l);
     }
     var by = el.getAttribute("aria-labelledby");
     if (by) {
-      var t = by.split(" ").map(function (id) {
-        var n = document.getElementById(id);
-        return n ? n.textContent : "";
-      }).join(" ");
+      var t = by.split(" ").map(function (id) { return text(document.getElementById(id)); }).join(" ");
       if (t.trim()) return t;
     }
     var wrap = el.closest("label");
-    if (wrap) return wrap.textContent;
+    if (wrap) return text(wrap);
     var fs = el.closest("fieldset");
-    var legend = fs && fs.querySelector("legend");
-    return (legend && legend.textContent) || el.getAttribute("aria-label") ||
+    return text(fs && fs.querySelector("legend")) || el.getAttribute("aria-label") ||
       el.placeholder || el.name || "";
   }
 
@@ -41,36 +41,47 @@
       if (["hidden", "submit", "button", "password", "file"].indexOf(type) > -1) return;
       if ((type === "checkbox" || type === "radio") && !el.checked) return;
       if (!el.value) return;
-      var label = labelFor(el, form).replace(/\*/g, "").replace(/\s+/g, " ").trim();
-      // Squarespace "Name" fields use fname/lname inputs; keep those names
-      // so the relay can tell first from last even when labels are generic.
+      var label = labelFor(el, form).replace(/\*/g, "").replace(/\(required\)/gi, "")
+        .replace(/\s+/g, " ").trim();
+      // Squarespace Name fields use fname/lname inputs; keep those names so
+      // the Worker can tell first from last even when labels are generic.
       if (el.name === "fname" || el.name === "lname") label = el.name;
-      fields.push({ label: label, value: el.value });
+      var prev = fields[fields.length - 1];
+      if (prev && prev.label === label) prev.value += " " + el.value; // multi-part fields (phone, checkboxes)
+      else fields.push({ label: label, value: el.value });
     });
     return fields;
   }
 
   function formTitle(block) {
-    var h = block.querySelector(".form-title, h2, h3");
-    return h ? h.textContent.trim() : "";
-  }
-
-  function send(payload) {
-    var body = JSON.stringify(payload);
-    try {
-      fetch(RELAY_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain" },
-        body: body,
-        keepalive: true,
-        mode: "cors",
-      }).catch(function () {});
-    } catch (e) {}
+    return text(block.querySelector(".form-title, h2, h3")).trim();
   }
 
   function succeeded(block, form) {
     return !form.isConnected ||
       !!block.querySelector(".form-submission-text, [class*='submission-text'], [class*='form-success']");
+  }
+
+  function looksValid(form) {
+    if (form.querySelector("[aria-invalid='true'], .field-error, [class*='field-error']")) return false;
+    if (typeof form.checkValidity === "function" && !form.checkValidity()) return false;
+    var ok = true;
+    form.querySelectorAll("[required], [aria-required='true']").forEach(function (el) {
+      if (!el.disabled && !String(el.value || "").trim()) ok = false;
+    });
+    return ok;
+  }
+
+  function send(payload) {
+    try {
+      fetch(RELAY_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload),
+        keepalive: true,
+        mode: "cors",
+      }).catch(function () {});
+    } catch (e) {}
   }
 
   document.addEventListener("submit", function (e) {
@@ -80,18 +91,28 @@
     var title = formTitle(block);
     if (SKIP_FORMS.indexOf(title) > -1) return;
 
+    // A new submit replaces any earlier attempt (e.g. one that failed validation).
+    if (pending.has(form)) pending.get(form)();
+
     var payload = { fields: capture(form), pageUrl: location.href, formName: title };
-    var sent = false;
-    var obs = new MutationObserver(function () {
-      if (!sent && succeeded(block, form)) {
-        sent = true;
-        obs.disconnect();
-        send(payload);
-      }
+    var done = false;
+    var obs, timer;
+    function finish(shouldSend) {
+      if (done) return;
+      done = true;
+      obs.disconnect();
+      clearTimeout(timer);
+      pending.delete(form);
+      if (shouldSend) send(payload);
+    }
+    obs = new MutationObserver(function () {
+      if (succeeded(block, form)) finish(true);
     });
     obs.observe(block, { childList: true, subtree: true });
-    // Stop watching after 30s (validation error or abandoned submit).
-    setTimeout(function () { obs.disconnect(); }, 30000);
+    // If Squarespace's success markup ever changes, still send a valid-looking
+    // submission rather than silently dropping the lead.
+    timer = setTimeout(function () { finish(succeeded(block, form) || looksValid(form)); }, FALLBACK_MS);
+    pending.set(form, function () { finish(false); });
   }, true);
 })();
 </script>

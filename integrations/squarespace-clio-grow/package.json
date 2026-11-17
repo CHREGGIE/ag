@@ -5,6 +5,7 @@
   "description": "Relays Squarespace form submissions to the Clio Grow Lead Inbox",
   "engines": { "node": ">=18" },
   "scripts": {
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js",
+    "deploy": "npx wrangler deploy"
   }
 }

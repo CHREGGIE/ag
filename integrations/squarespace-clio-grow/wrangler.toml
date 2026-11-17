@@ -1,0 +1,11 @@
+name = "clio-lead"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://www.yourfirm.com,https://yourfirm.com"
+CLIO_REGION = "us"
+LEAD_SOURCE = "Website"
+
+# The Clio token is a secret, never in this file:
+#   npx wrangler secret put CLIO_INBOX_LEAD_TOKEN
